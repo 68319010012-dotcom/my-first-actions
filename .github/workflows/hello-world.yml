@@ -1,0 +1,15 @@
+name: Hello World Workflow
+
+# กำหนดให้ทำงานเมื่อมีการ Push โค้ดหรือสร้างไฟล์
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # ใช้ระบบปฏิบัติการ Ubuntu ในการรัน
+
+    steps:
+      - name: Step 1 Say Hello
+        run: echo "Hello, GitHub Actions!"
+
+      - name: Step 2 Say Welcome
+        run: echo "Welcome to my first workflow."

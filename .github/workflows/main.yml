@@ -1,0 +1,31 @@
+name: Deploy Static Web to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+
+# 1. กำหนด Permission ตามที่โจทย์ระบุ
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 2. ใช้ Action สำเร็จรูปในชื่อของคุณเพื่อดึงโค้ดตามเงื่อนไขโจทย์
+      - name: Checkout Code
+        uses: actions/Pakasinee-012@v4
+
+      # 3. ใช้ Action สำเร็จรูปสำหรับจัดการ GitHub Pages และ Deploy
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.' # ดึงไฟล์ทั้งหมดจากหน้าแรกไป deploy
+
+      - name: Deploy to GitHub Pages
+        uses: actions/gh-pages@v4
